@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>PDF Reader + Dict</title>
+
+<link rel="stylesheet" href="styles.css"/>
+
+<!-- PDF.js bundle (provides pdfjsLib & worker) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+
+<body>
+<div class="app-container">
+
+  <header>
+    <h1>PDF Reader</h1>
+
+    <!-- Toolbar – upload + navigation + zoom -->
+    <div class="toolbar">
+      <label for="pdfUpload" class="upload-btn">📁 Upload PDF</label>
+      <input type="file" id="pdfUpload" accept=".pdf">
+
+      <button id="prevPageBtn">&larr;</button>
+      <button id="nextPageBtn">&rarr;</button>
+
+      <select id="zoomSelect">
+        <option value="fit">Fit to width</option>
+        <option selected value="1.0">100 %</option>
+        <option value="2.0">200 %</option>
+      </select>
+
+      <button id="nightModeToggle">Night Mode</button>
+      <button id="textReaderToggle">Text Reader</button>
+    </div>
+  </header>
+
+  <div class="main-content">
+
+    <!-- PDF canvas -->
+    <div class="pdf-viewer" id="pdfViewer"></div>
+
+    <!-- Text‑reader pane (same width as viewer) -->
+    <div class="text-reader" id="textReader">
+      <h2>Text Reader</h2>
+      <div class="reader-content" id="readerContent"></div>
+    </div>
+      <div class="dic-container" id="diccon">
+    <!-- Dictionary search – right side -->
+  <div class="dictionary-search" id="dictionarySearch">
+    <input type="text" placeholder="Search word…" id="searchInput"/>
+    <button id="searchBtn">🔍</button>
+     <!-- Dictionary panel – left side -->
+  <div class="dictionary-panel" id="dictionaryPanel">
+    <h3>Dictionary Lookup</h3>
+    <div class="word-info" id="wordInfo"></div>
+  </div>
+    <!-- <div class="search-results" id="searchResults"></div> -->
+  </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

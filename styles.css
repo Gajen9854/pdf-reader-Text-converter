@@ -1,0 +1,184 @@
+/* ----------------------------------------------------------------------
+ * Base & Reset
+ * -------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+   position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Night mode */
+body.night-mode {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+body.night-mode .app-container { background-color: #1e1e1e; }
+body.night-mode .pdf-viewer canvas { filter: invert(1); }
+
+/* ----------------------------------------------------------------------
+ * App container
+ * -------------------------------------------------------------- */
+.app-container {
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+}
+
+/* ----------------------------------------------------------------------
+ * Header
+ * -------------------------------------------------------------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+header.night-mode { border-color: #444; }
+
+h1 { color: inherit; }
+
+/* ----------------------------------------------------------------------
+ * Controls
+ * -------------------------------------------------------------- */
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+button,
+.upload-btn {
+    padding: 8px 16px;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover,
+.upload-btn:hover { background: #45a049; }
+button.active, .upload-btn.active { background: #2e7d32; }
+
+/* Hidden file input */
+#pdfUpload { display: none; }
+
+/* ----------------------------------------------------------------------
+ * Main layout
+ * -------------------------------------------------------------- */
+.main-content {
+    display: flex;
+    gap: 20px;
+   height: 560px; /* Uses full screen height */
+}
+.pdf-viewer,
+.text-reader {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    overflow:scroll;
+}
+
+.pdf-viewer.dragover { border-color: #2196F3; }
+
+/* Canvas styling */
+.pdf-viewer canvas {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Text reader hidden by default */
+.text-reader { display: none; }
+.text-reader.active { display: block; }
+
+.reader-content {
+    line-height: 1.6;
+    font-size: 16px;
+}
+.highlight {
+    background-color: #ffeb3b;
+}
+.dic-container{
+    height: auto;
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: auto;
+    padding: 6px; 
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+#searchBtn {
+    display: inline-block;
+    padding: 6px 6px;
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#searchInput {
+    width: 30vh;
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+/* ----------------------------------------------------------------------
+ * Dictionary panel
+ * -------------------------------------------------------------- */
+.dictionary-panel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding: 5px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: none;
+}
+body.night-mode .dictionary-panel { background: #2a2a2a; }
+.dictionary-panel.active { display: block; }
+
+.word-info {
+    width: 19vw;
+    height: 70vh;
+    margin-top: 10px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: scroll;
+}
+
+body.night-mode .word-info { background: #3a3a3a; color: #e0e0e0; }
+
+/* ----------------------------------------------------------------------
+ * Responsive
+ * -------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .main-content { flex-direction: column; }
+}
