@@ -2,7 +2,7 @@
    PDF‑JS worker (must be set before any pdfjsLib call)
    -------------------------------------------------------------- */
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
+  'pdf.worker.min.js';
 
 /* --------------------------------------------------------------
    DOM references & state variables
